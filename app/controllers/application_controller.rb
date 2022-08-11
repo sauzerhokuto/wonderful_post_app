@@ -20,26 +20,3 @@ class ApplicationController < ActionController::Base
   #  params.require(:user).permit(:title, :content)  # titleとbodyの変更を許可
   # end
 end
-
-#   binding.pry
-#   def index #一覧
-#   end
-#   binding.pry
-#   def show #詳細
-#   end
-
-#   def new #新規記事作成
-#   end
-
-#   def edit #編集
-#   end
-
-#   def create #モデルの生成と保存
-#   end
-
-#   def update #保存機能
-#   end
-
-#   def destroy #削除
-#   end
-# end
