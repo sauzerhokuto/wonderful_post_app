@@ -26,10 +26,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: "#{t('activerecord.models.article')}を作成しました。" }
-        format.json { render :show, status: :created, location: @article }
+        # format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        # format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +39,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: "#{t('activerecord.models.article')}を編集しました。" }
-        format.json { render :show, status: :ok, location: @article }
+        # format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        # format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,14 +53,14 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "#{t('activerecord.models.article')}を削除しました。" }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = user.articles(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
