@@ -2,7 +2,7 @@ class MypageController < ApplicationController
   # before_action :set_user, only: [:show]
 
   def show
-    @articles = current_user.articles
+    @articles = current_user.articles.page(params[:page])
   end
 
   # private
