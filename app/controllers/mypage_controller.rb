@@ -5,6 +5,9 @@ class MypageController < ApplicationController
     @articles = current_user.articles.page(params[:page])
   end
 
+  def search
+    @article = current_user.articles.looks(params[:keyword])
+  end
   # private
 
   #   def set_user
