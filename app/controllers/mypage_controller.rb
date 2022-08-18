@@ -2,12 +2,13 @@ class MypageController < ApplicationController
   # before_action :set_user, only: [:show]
 
   def show
-    @articles = current_user.articles.page(params[:page])
+    if params[:title].present?
+      @articles = current_user.articles.where("title like ?", "%#{params[:title]}%").page(params[:page])
+    else
+      @articles = current_user.articles.page(params[:page])
+    end
   end
 
-  def search
-    @article = current_user.articles.looks(params[:keyword])
-  end
   # private
 
   #   def set_user

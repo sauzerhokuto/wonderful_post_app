@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all.page(params[:page])
+    if params[:title].present?
+      @articles = Article.where("title like ?", "%#{params[:title]}%").page(params[:page])
+    else
+      @articles = Article.all.page(params[:page])
+    end
   end
 
   # GET /articles/1 or /articles/1.json
