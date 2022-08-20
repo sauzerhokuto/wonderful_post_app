@@ -20,9 +20,10 @@ end
 
 50.times do |n|
   user = User.first
-  user.articles.create!(
+  article = user.articles.create!(
     title: "No.#{n+1}: user001の記事",
-    content: "No.#{n+1}: user001の記事の本文" )
+    content: "No.#{n+1}: user001の記事の本文")
+    # article.tags.create!(name:"プログラミング")
 end
 
 50.times do |n|
@@ -38,6 +39,17 @@ end
     title: "No.#{n+1}: user003の記事",
     content: "No.#{n+1}: user003の記事の本文" )
 end
+
+Article.all.ids.sort.each do |article_id|
+  #Articleの全てのidをeachで取得する
+  #idsは主キーのカラムデータを配列で取得するメソッド
+  #sortは並び替えるメソッド
+  Tag.all.ids.sort.each do |tag_id|
+    ArticleTag.find_or_create_by!(article_id: article_id, tag_id: tag_id)
+    #eachで送られてきたidを基に中間テーブルで外部キーを作成
+  end
+end
+
 
 
 #danofさんの解答例↓
